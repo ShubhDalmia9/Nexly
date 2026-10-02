@@ -1,0 +1,647 @@
+/* ---------- Discover page layout ---------- */
+.discover {
+  /* Sized so the card, its buttons and the shortcut hint fit one screen on a short laptop display;
+     the card itself drops lower-priority sections as it shrinks (see the container queries below). */
+  --deck-height: clamp(380px, calc(100dvh - var(--nav-height) - 220px), 640px);
+  display: grid;
+  margin-top: calc(var(--s-3) * -1);
+  grid-template-columns: 288px minmax(0, 1fr) 272px;
+  align-items: start;
+  gap: var(--s-8);
+}
+
+.discover__filters {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--s-6));
+  max-height: calc(100dvh - var(--nav-height) - var(--s-10));
+  padding: var(--s-5);
+  overflow-y: auto;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.discover__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.discover__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  width: min(100%, 420px);
+  min-height: 34px;
+  margin-bottom: var(--s-3);
+}
+
+.discover__bar > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+}
+
+.discover__bar h1 {
+  font-size: var(--text-xl);
+}
+
+.discover__bar p {
+  font-size: var(--text-sm);
+}
+
+.discover__filter-button {
+  display: none;
+}
+
+.discover__stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: var(--deck-height);
+}
+
+.discover__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--ink-500);
+  font-size: var(--text-sm);
+}
+
+.discover__hint svg {
+  width: 16px;
+  height: 16px;
+}
+
+kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  margin: 0 2px 0 6px;
+  padding: 0 5px;
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  background: var(--surface);
+  color: var(--ink-700);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.discover__side {
+  position: sticky;
+  top: calc(var(--nav-height) + var(--s-6));
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.stat-list > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stat-list dt {
+  color: var(--ink-600);
+  font-size: var(--text-sm);
+}
+
+.stat-list dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.upnext {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upnext li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.upnext li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.upnext strong,
+.upnext span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upnext strong {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.upnext li > div span {
+  color: var(--ink-500);
+  font-size: var(--text-xs);
+}
+
+.upnext__score {
+  flex: none;
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  background: var(--iris-100);
+  color: var(--iris-700);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.discover__tip {
+  display: flex;
+  gap: 12px;
+  background: var(--iris-50);
+  border-color: var(--iris-100);
+  box-shadow: none;
+  color: var(--ink-700);
+  font-size: var(--text-sm);
+}
+
+.discover__tip svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--iris-600);
+}
+
+/* ---------- Profile card area ---------- */
+.deck {
+  position: relative;
+  width: min(100%, 420px);
+  height: var(--deck-height);
+  margin: 0 auto;
+}
+
+.deck__card {
+  position: absolute;
+  inset: 0;
+}
+
+/* A short slide when a different profile is shown, from the side the member moved towards. */
+.deck__card.is-entering-forward {
+  animation: card-in-forward 220ms var(--ease-out);
+}
+
+.deck__card.is-entering-back {
+  animation: card-in-back 220ms var(--ease-out);
+}
+
+@keyframes card-in-forward {
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+}
+
+@keyframes card-in-back {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+}
+
+/* ---------- Profile card ---------- */
+.deck-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  container-type: size;
+}
+
+.deck-card__cover {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  height: 70px;
+  padding: 14px 16px;
+  background:
+    radial-gradient(120% 140% at 0% 0%, hsl(var(--hue, 250) 90% 93%), transparent 62%),
+    linear-gradient(110deg, hsl(calc(var(--hue, 250) + 28) 82% 95%), hsl(calc(var(--hue, 250) + 70) 88% 92%));
+}
+
+.deck-card__head {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: -36px;
+  padding: 0 20px;
+}
+
+.deck-card__avatar {
+  box-shadow:
+    0 0 0 4px var(--surface),
+    var(--shadow-sm);
+}
+
+/* A green ring marks someone who has already sent the viewer a connection request. */
+.deck-card--incoming .deck-card__avatar {
+  box-shadow:
+    0 0 0 4px var(--surface),
+    0 0 0 6px var(--mint-600);
+}
+
+.deck-card__identity {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 2px;
+}
+
+.deck-card__name {
+  overflow: hidden;
+  font-size: 1.4rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-card__role {
+  overflow: hidden;
+  color: var(--ink-600);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  padding: 14px 20px 6px;
+  overflow: hidden;
+  /* Fade the last few pixels so content that does not fit ends softly. */
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent);
+}
+
+.deck-card__facts {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--ink-600);
+  font-size: var(--text-sm);
+}
+
+.deck-card__facts li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.deck-card__facts svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--ink-500);
+}
+
+.deck-card__why {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--iris-50);
+}
+
+.deck-card__why .eyebrow {
+  color: var(--iris-700);
+}
+
+.deck-card__section {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: var(--text-sm);
+}
+
+.deck-card .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+}
+
+.deck-card__project-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-900);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.deck-card__project-text,
+.deck-card__goal p,
+.deck-card__background li {
+  color: var(--ink-600);
+  line-height: 1.45;
+}
+
+.deck-card__background li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deck-card__foot {
+  flex: none;
+  padding: 4px 12px 10px;
+}
+
+.deck-card__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 38px;
+  border-radius: var(--r-md);
+  color: var(--iris-700);
+  font-size: var(--text-sm);
+  font-weight: 650;
+  transition: background-color var(--fast);
+}
+
+.deck-card__more:hover {
+  background: var(--iris-50);
+}
+
+.deck-card__more svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Drop lower-priority sections as the card gets shorter, most expendable first. */
+@container (max-height: 650px) {
+  .deck-card__goal {
+    display: none;
+  }
+}
+
+@container (max-height: 600px) {
+  .deck-card__interests {
+    display: none;
+  }
+}
+
+@container (max-height: 540px) {
+  .deck-card__background {
+    display: none;
+  }
+}
+
+@container (max-height: 480px) {
+  .deck-card__project-text,
+  .deck-card__why .reason:nth-child(n + 3) {
+    display: none;
+  }
+
+  .deck-card__body {
+    gap: 11px;
+  }
+}
+
+@container (max-height: 440px) {
+  .deck-card__cover {
+    height: 54px;
+  }
+
+  .deck-card__project,
+  .deck-card__facts li:nth-child(2) {
+    display: none;
+  }
+
+  /* One row of skills; the rest are in the full profile. */
+  .deck-card__section ul {
+    max-height: 28px;
+    overflow: hidden;
+  }
+}
+
+/* ---------- Card actions: Previous · Skip · Connect · Next ---------- */
+.deck-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: min(100%, 420px);
+  margin-top: 14px;
+}
+
+.deck-actions__skip,
+.deck-actions__connect {
+  flex: 1;
+  min-width: 0;
+}
+
+.deck-actions__connect {
+  box-shadow: 0 8px 20px rgba(79, 63, 224, 0.28);
+}
+
+.deck-nav {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 50px;
+  padding: 0 10px;
+  border-radius: var(--r-full);
+  color: var(--ink-700);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition:
+    background-color var(--fast),
+    color var(--fast);
+}
+
+.deck-nav svg {
+  width: 18px;
+  height: 18px;
+}
+
+.deck-nav:hover:not(:disabled) {
+  background: rgba(20, 20, 27, 0.06);
+  color: var(--ink-900);
+}
+
+.deck-nav:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--r-full);
+}
+
+.deck-nav:disabled {
+  opacity: 0.4;
+}
+
+.discover__undo {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ---------- "Connection request accepted" dialog ---------- */
+.connected-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px 8px;
+  text-align: center;
+}
+
+.connected-dialog__avatars {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.connected-dialog__avatars .avatar {
+  box-shadow: 0 0 0 4px var(--surface), var(--shadow-sm);
+  animation: connected-in 420ms var(--ease-out) both;
+}
+
+.connected-dialog__avatars .avatar:first-child {
+  --from: -20px;
+}
+
+.connected-dialog__avatars .avatar:last-child {
+  --from: 20px;
+}
+
+.connected-dialog__link {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-inline: -12px;
+  border-radius: 50%;
+  background: var(--mint-600);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--surface);
+  animation: connected-in 420ms var(--ease-out) 100ms both;
+}
+
+.connected-dialog__link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.connected-dialog__title {
+  font-size: var(--text-xl);
+}
+
+.connected-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@keyframes connected-in {
+  from {
+    opacity: 0;
+    translate: var(--from, 0) 0;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1160px) {
+  .discover {
+    grid-template-columns: minmax(0, 1fr) 272px;
+  }
+
+  .discover__filters {
+    display: none;
+  }
+
+  .discover__filter-button {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 860px) {
+  .discover {
+    --deck-height: clamp(360px, calc(100dvh - var(--nav-height) - var(--tabbar-height) - 196px), 620px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+    margin-top: 0;
+  }
+
+  .discover__side {
+    position: static;
+  }
+
+  .discover__hint {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .deck-nav span {
+    display: none;
+  }
+
+  .deck-nav {
+    width: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+/* Devices without a keyboard do not need the shortcut hint. */
+@media (hover: none) {
+  .discover__hint {
+    display: none;
+  }
+}

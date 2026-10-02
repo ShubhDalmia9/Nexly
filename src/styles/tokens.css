@@ -1,0 +1,94 @@
+/* Design tokens: the single source for colour, type, spacing, radius and elevation. */
+:root {
+  /* Typography */
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Inter Variable', system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+
+  /* Neutrals: warm paper and ink rather than pure grey */
+  --ink-900: #14141b;
+  --ink-800: #23242e;
+  --ink-700: #3a3b47;
+  --ink-600: #51525f;
+  --ink-500: #666775;
+  --ink-300: #a9aab4;
+  --line: #e7e5df;
+  --line-strong: #d6d3cb;
+  --paper: #f7f6f2;
+  --paper-deep: #efede7;
+  --surface: #ffffff;
+
+  /* Brand: iris */
+  --iris-50: #f5f3ff;
+  --iris-100: #ebe8ff;
+  --iris-200: #d8d2ff;
+  --iris-500: #6454f0;
+  --iris-600: #4f3fe0;
+  --iris-700: #4031c2;
+  --iris-900: #231a78;
+
+  /* Semantic */
+  --mint-50: #ecfaf3;
+  --mint-100: #d5f3e4;
+  --mint-600: #087f57;
+  --mint-700: #066a48;
+  --coral-50: #fef1ee;
+  --coral-100: #fcdfd8;
+  --coral-600: #c93a22;
+  --coral-700: #a92d18;
+  --amber-100: #fff0cc;
+  --amber-700: #8a5700;
+
+  /* Radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-full: 999px;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(20, 20, 27, 0.05);
+  --shadow-sm: 0 1px 2px rgba(20, 20, 27, 0.04), 0 4px 14px rgba(20, 20, 27, 0.05);
+  --shadow-md: 0 2px 4px rgba(20, 20, 27, 0.04), 0 14px 36px rgba(20, 20, 27, 0.09);
+  --shadow-lg: 0 4px 10px rgba(20, 20, 27, 0.05), 0 28px 64px rgba(20, 20, 27, 0.16);
+  --ring: 0 0 0 3px rgba(79, 63, 224, 0.28);
+
+  /* Spacing */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-14: 56px;
+  --s-18: 72px;
+
+  /* Layout */
+  --container: 1160px;
+  --gutter: 24px;
+  --nav-height: 64px;
+  --tabbar-height: 0px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --fast: 140ms;
+  --medium: 240ms;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --gutter: 16px;
+    --nav-height: 56px;
+    --tabbar-height: calc(62px + env(safe-area-inset-bottom, 0px));
+  }
+}

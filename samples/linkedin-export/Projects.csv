@@ -1,0 +1,3 @@
+Title,Description,Url,Started On,Finished On
+Tabletop sorting arm,"A low-cost robot arm that sorts recycling by material using computer vision and a custom gripper. Built with ROS and Python.",https://example.com/sorting-arm,Aug 2022,Jan 2023
+Open-source gripper library,"An open source C++ library of parallel-gripper controllers with a simulation harness, used by three university labs.",,Feb 2021,

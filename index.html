@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta
+      name="description"
+      content="Nexly helps you discover relevant professional connections faster, through concise profile cards ranked for you."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Nexly — Find the right people, faster</title>
+    <style>
+      /*
+        Shown only when this file is opened without Nexly's own server (from disk, or through a
+        static file server such as Live Server). There the app cannot start or reach its API, so
+        after a few seconds this explains how to open it. Served normally, the app replaces it
+        the moment it starts and it is never seen.
+      */
+      .boot-fallback {
+        max-width: 520px;
+        margin: 18vh auto 0;
+        padding: 0 24px;
+        font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', sans-serif;
+        color: #23242e;
+        opacity: 0;
+        animation: boot-fallback 0.3s ease 6s forwards;
+      }
+      .boot-fallback h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+      .boot-fallback code {
+        padding: 1px 6px;
+        border-radius: 5px;
+        background: #efede7;
+      }
+      @keyframes boot-fallback {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot-fallback" role="status">
+        <h1>Nexly is not running at this address</h1>
+        <p>
+          Start Nexly from its project folder with <code>npm run dev</code>, then open
+          <a href="http://localhost:4000">http://localhost:4000</a>.
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
