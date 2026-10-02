@@ -79,7 +79,7 @@ async function main(): Promise<void> {
   await attachFrontend(app, server);
   app.use(errorHandler);
 
-  server.listen(config.port, () => {
+    server.listen(config.port, '0.0.0.0', () => {
     console.log(`[nexly] Ready on ${config.appUrl} (${config.isProduction ? 'production' : 'development'})`);
     console.log(`[nexly] ${describeEmailSetup()}`);
     // Check the mail sign-in now, so a wrong address or app password shows up here and not at the first sign-up.
