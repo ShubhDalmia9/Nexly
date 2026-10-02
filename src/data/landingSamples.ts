@@ -1,0 +1,146 @@
+import type { Person, Profile } from '../../shared/types';
+
+// Illustrative cards for the landing page demo. These are fictional people and
+// nothing is sent to the server when a visitor presses Connect or Skip on them.
+
+const base: Omit<Profile, 'userId' | 'fullName' | 'profession' | 'workplace' | 'specialisation' | 'location' | 'skills' | 'interests' | 'aspirations' | 'projects' | 'photoUrl'> = {
+  headline: '',
+  about: '',
+  linkedinUrl: '',
+  goals: [],
+  lookingFor: [],
+  experience: [],
+  education: [],
+  certifications: [],
+  onboarded: true,
+  joinedAt: '2026-01-01T00:00:00.000Z',
+  updatedAt: '2026-01-01T00:00:00.000Z',
+};
+
+export const LANDING_SAMPLES: Person[] = [
+  {
+    profile: {
+      ...base,
+      userId: -1,
+      fullName: 'Maya Okafor',
+      profession: 'Mechanical Design Engineer',
+      workplace: 'Kestrel Dynamics',
+      specialisation: 'Robotic mechanisms',
+      location: 'Lagos, Nigeria',
+      photoUrl: '/uploads/seed-maya.svg',
+      skills: ['CAD', 'Robotics', '3D Printing', 'Mechanical Design', 'Prototyping', 'FEA'],
+      interests: ['Robotics', 'Drones', 'Open Source'],
+      aspirations: 'Bring an affordable robotic arm to market for schools and small workshops.',
+      projects: [
+        {
+          title: 'Low-cost 6-axis robotic arm',
+          description: 'A printable desktop arm designed so a school lab can build it for under $400.',
+          type: 'Hardware',
+          role: 'Lead designer',
+          year: 2025,
+          url: '',
+          skills: ['CAD', '3D Printing'],
+          imageUrl: null,
+        },
+      ],
+    },
+    relevance: {
+      score: 86,
+      tier: 'high',
+      reasons: [
+        { kind: 'interests', label: '3 shared interests', detail: 'Robotics, Drones, Open Source' },
+        { kind: 'complementary', label: 'Complementary skills', detail: 'CAD, 3D Printing' },
+        { kind: 'project', label: 'Relevant project experience', detail: 'Low-cost 6-axis robotic arm' },
+      ],
+      sharedSkills: ['Robotics'],
+      sharedInterests: ['Robotics', 'Drones', 'Open Source'],
+      sharedGoals: [],
+      complementarySkills: ['CAD', '3D Printing'],
+      relevantProjects: ['Low-cost 6-axis robotic arm'],
+    },
+    connection: { id: null, status: 'none', since: null },
+  },
+  {
+    profile: {
+      ...base,
+      userId: -2,
+      fullName: 'Kenji Watanabe',
+      profession: 'Embedded Systems Engineer',
+      workplace: 'Voltline Labs',
+      specialisation: 'Motor control and firmware',
+      location: 'Osaka, Japan',
+      photoUrl: '/uploads/seed-kenji.svg',
+      skills: ['Embedded Systems', 'C++', 'Electronics', 'PCB Design', 'Control Systems'],
+      interests: ['Robotics', 'IoT', 'Open Hardware'],
+      aspirations: 'Mentor the next generation of robotics engineers.',
+      projects: [
+        {
+          title: 'Open brushless motor controller',
+          description: 'An open-hardware controller for robot joints, with a CAN interface.',
+          type: 'Open source',
+          role: 'Creator',
+          year: 2025,
+          url: '',
+          skills: ['PCB Design', 'C++'],
+          imageUrl: null,
+        },
+      ],
+    },
+    relevance: {
+      score: 79,
+      tier: 'high',
+      reasons: [
+        { kind: 'intent', label: 'Open to mentoring', detail: 'You are looking for a mentor' },
+        { kind: 'skills', label: '1 shared skill', detail: 'C++' },
+        { kind: 'field', label: 'Works in your field', detail: 'Robotics' },
+      ],
+      sharedSkills: ['C++'],
+      sharedInterests: ['Robotics'],
+      sharedGoals: [],
+      complementarySkills: ['Electronics', 'PCB Design'],
+      relevantProjects: ['Open brushless motor controller'],
+    },
+    connection: { id: null, status: 'none', since: null },
+  },
+  {
+    profile: {
+      ...base,
+      userId: -3,
+      fullName: 'Elena Rossi',
+      profession: 'Product Designer',
+      workplace: 'Studio Fieldnote',
+      specialisation: 'Design systems',
+      location: 'Milan, Italy',
+      photoUrl: '/uploads/seed-elena.svg',
+      skills: ['UX Design', 'Figma', 'Design Systems', 'Prototyping', 'Accessibility'],
+      interests: ['Typography', 'Accessibility', 'Startups'],
+      aspirations: 'Lead a design team and speak about design systems that survive contact with engineering.',
+      projects: [
+        {
+          title: 'Fieldnote design system',
+          description: 'A token-driven system of 60 components used across four client products.',
+          type: 'Design',
+          role: 'Design lead',
+          year: 2025,
+          url: '',
+          skills: ['Design Systems', 'Figma'],
+          imageUrl: null,
+        },
+      ],
+    },
+    relevance: {
+      score: 58,
+      tier: 'good',
+      reasons: [
+        { kind: 'intent', label: 'Open to collaborating', detail: 'You are both open to collaborating' },
+        { kind: 'interests', label: '1 shared interest', detail: 'Startups' },
+      ],
+      sharedSkills: [],
+      sharedInterests: ['Startups'],
+      sharedGoals: [],
+      complementarySkills: [],
+      relevantProjects: [],
+    },
+    connection: { id: null, status: 'none', since: null },
+  },
+];
