@@ -12,6 +12,8 @@ SQLite database, email-and-password accounts, LinkedIn import from a PDF or a
 data export, image uploads, a relevance engine, and a starting set of member
 profiles so there are people to discover from the first minute.
 
+![The Nexly landing page, with an interactive profile card showing why a person is relevant](docs/images/landing.png)
+
 ---
 
 ## Quick start
@@ -136,6 +138,41 @@ state.
 10. **Back to the first account** – a "Connection request accepted" notification is waiting, and the contact details are now visible.
 11. **Settings** – change your name or password, hide your profile, choose which emails you get, sign out other devices, or delete the account.
 
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/create-account.png" alt="The create account page"></td>
+    <td width="50%"><img src="docs/images/login.png" alt="The log in page"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Create an account: name, email and password</em></td>
+    <td align="center"><em>Log in with email and password</em></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/onboarding-start.png" alt="Profile set-up: import from LinkedIn or start from scratch"></td>
+    <td width="50%"><img src="docs/images/discover.png" alt="The Discover page with a ranked profile card"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Choose how to build your profile</em></td>
+    <td align="center"><em>Discover: Previous, Skip, Connect and Next, with filters and your activity</em></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/connections.png" alt="The Connections page with two incoming requests"></td>
+    <td width="50%"><img src="docs/images/notifications.png" alt="The notifications dropdown with connection requests"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Connections: answer incoming requests</em></td>
+    <td align="center"><em>Notifications: accept or decline from the bell</em></td>
+  </tr>
+</table>
+
+![Settings: account, profile visibility, notifications, signed-in devices and account management](docs/images/settings.png)
+
 ## Features
 
 - **Accounts** – create an account with a name, email and password (strength indicator, show/hide, confirmation); log in; log out; password reset by email with expiring single-use links
@@ -152,6 +189,26 @@ state.
 - **Dashboard** – recommendations, pending requests, recent connections, notifications, profile strength and suggested next steps
 - **Responsive and accessible** – phone to desktop; keyboard operable; labelled controls; visible focus; live announcements; reduced-motion support
 - **Loading, empty and error states** on every page
+
+![The dashboard: recommendations, statistics, profile strength, suggested next steps and recent connections](docs/images/dashboard.png)
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/search.png" alt="Search results for “robotics”"></td>
+    <td width="50%"><img src="docs/images/edit-profile.png" alt="The edit profile page"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Search across names, skills, workplaces and projects</em></td>
+    <td align="center"><em>Edit profile, with photo upload and profile strength</em></td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="docs/images/mobile-dashboard.png" alt="The dashboard on a phone" width="260">
+  &nbsp;&nbsp;
+  <img src="docs/images/mobile-discover.png" alt="Discover on a phone" width="260">
+</p>
+<p align="center"><em>The same app on a phone: dashboard and Discover, with the bottom tab bar</em></p>
 
 ## Technology
 
@@ -286,6 +343,8 @@ Every signal that fired is returned to the UI as a reason, shown under "Why
 you're seeing …". Details imported from LinkedIn land in the same profile
 fields, so they feed the ranking exactly like hand-typed ones.
 
+![A full profile with its relevance score and every reason listed under “Why you might connect”](docs/images/profile.png)
+
 ## Connection rules
 
 - **Skip** – recorded; that person is not shown again. "Review skipped profiles" (shown when the list is finished) brings them back.
@@ -314,6 +373,19 @@ items. *Complete your profile* offers editable fields for everything else, such
 as specialisation, interests, projects, career aspirations and goals, and the
 kinds of people they want to meet. Nothing is saved until the member presses
 *Create profile* (or *Save changes* when importing into an existing profile).
+
+![Import your LinkedIn profile: upload a LinkedIn PDF or a data export ZIP](docs/images/linkedin-import.png)
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/review-profile.png" alt="The Review your profile screen after importing a LinkedIn data export"></td>
+    <td width="50%"><img src="docs/images/complete-profile.png" alt="The Complete your profile section of the review screen"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Review your profile: what was imported from the data export</em></td>
+    <td align="center"><em>Complete your profile: the details you add yourself</em></td>
+  </tr>
+</table>
 
 ## Security
 
